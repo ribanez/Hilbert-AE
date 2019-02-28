@@ -8,7 +8,7 @@ from src.AutoEncoder import autoencoder
 
 def get_args():
 
-    parser = argparse.ArgumentParser('Train Contact-Map AutoEncoder')
+    parser = argparse.ArgumentParser('Train Hilbert AutoEncoder')
     parser.add_argument('--hdf5_file', type=str, help='Path to HDF5 file')
     parser.add_argument('--checkpoint', type=str, default=None, help='Path to Checkpoint Model')
     parser.add_argument('--epochs', type=int, default=100, help='Number of epochs')
