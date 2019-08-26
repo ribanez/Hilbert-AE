@@ -3,7 +3,6 @@ from torch import nn
 
 
 class autoencoder(nn.Module):
-
     def __init__(self, nc, ndf):
         super(autoencoder, self).__init__()
 

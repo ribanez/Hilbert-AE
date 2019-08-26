@@ -4,14 +4,14 @@ import numpy as np
 def hilbert_curve(n):
     if n == 1:
         return np.zeros((1, 1), np.int32)
-    
+
     t = hilbert_curve(n // 2)
-    
+
     a = np.flipud(np.rot90(t))
     b = t + t.size
     c = t + t.size * 2
     d = np.flipud(np.rot90(t, -1)) + t.size * 3
-    
+
     return np.vstack(map(np.hstack, [[a, b], [d, c]]))
 
 
@@ -51,12 +51,11 @@ if __name__ == '__main__':
 
     hilbert_map = hilbert_curve(order)
 
-    map_ = seq2hilbert([0,0,0,0,1,1,1,1,0,0, 0, 0], hilbert_map, 2)
+    map_ = seq2hilbert([0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0], hilbert_map, 2)
 
-    true_map = np.array([[[1,0],[1,0],[0,1],[0,1]],
-                         [[1,0],[1,0],[0,1],[0,1]],
-                         [[0,0],[0,0],[1,0],[1,0]],
-                         [[0,0],[0,0],[1,0],[1,0]]
-                        ])
+    true_map = np.array([[[1, 0], [1, 0], [0, 1], [0, 1]],
+                         [[1, 0], [1, 0], [0, 1], [0, 1]],
+                         [[0, 0], [0, 0], [1, 0], [1, 0]],
+                         [[0, 0], [0, 0], [1, 0], [1, 0]]])
 
     assert (map_ == true_map).all()
