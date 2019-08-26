@@ -29,9 +29,13 @@ class Dataset_Hilbert(torch.utils.data.Dataset):
         samples_list.sort(key=lambda x: len(x[0]), reverse=True)
         return zip(*samples_list)
 
+    
+def DataLoader(filename):
+    return Dataset_Hilbert(filename)
+
 
 def contruct_dataloader_from_disk(filename, minibatch_size):
-    return torch.utils.data.DataLoader(Dataset_Hilbert(filename),
+    return torch.utils.data.DataLoader(DataLoader(filename),
                                        batch_size=minibatch_size,
                                        shuffle=True,
                                        collate_fn=Dataset_Hilbert.merge_samples_to_minibatch)
