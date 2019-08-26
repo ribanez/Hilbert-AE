@@ -70,7 +70,7 @@ def train(args):
 
         for idx, minibatch_ in enumerate(train_loader):
 
-            seq, hilbert_map = minibatch_
+            hilbert_map = minibatch_
 
             hilbert_map = torch.stack(hilbert_map).permute(0, 3, 1, 2).type(torch.FloatTensor)
 
