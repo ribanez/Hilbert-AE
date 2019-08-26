@@ -2,18 +2,16 @@ import numpy as np
 
 
 def hilbert_curve(n):
-    # BASED IN https://github.com/Doulrs/Hilbert-CNN/blob/master/functions.py
-    # recursion base
     if n == 1:
         return np.zeros((1, 1), np.int32)
-    # make (n/2, n/2) index
+    
     t = hilbert_curve(n // 2)
-    # flip it four times and add index offsets
+    
     a = np.flipud(np.rot90(t))
     b = t + t.size
     c = t + t.size * 2
     d = np.flipud(np.rot90(t, -1)) + t.size * 3
-    # and stack four tiles into resulting array
+    
     return np.vstack(map(np.hstack, [[a, b], [d, c]]))
 
 
